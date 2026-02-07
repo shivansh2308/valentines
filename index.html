@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Love Journey ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+    <!-- Floating Hearts Background -->
+    <div id="hearts-bg"></div>
+
+    <main class="container">
+        <!-- Screen 1: Welcome -->
+        <section id="welcome-screen" class="screen">
+            <div class="sticker-wrapper">
+                <div class="sticker-circle">
+                    <!-- SVG: Cute Waving Panda -->
+                    <svg id="welcome-panda" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="90" fill="#fff5f7" />
+                        <!-- Ears -->
+                        <circle cx="60" cy="60" r="25" fill="#333" />
+                        <circle cx="140" cy="60" r="25" fill="#333" />
+                        <!-- Face -->
+                        <circle cx="100" cy="110" r="70" fill="#fff" />
+                        <!-- Eyes -->
+                        <ellipse cx="80" cy="100" rx="15" ry="20" fill="#333" />
+                        <ellipse cx="120" cy="100" rx="15" ry="20" fill="#333" />
+                        <circle cx="82" cy="95" r="5" fill="#fff" />
+                        <circle cx="118" cy="95" r="5" fill="#fff" />
+                        <!-- Nose & Mouth -->
+                        <circle cx="100" cy="115" r="5" fill="#333" />
+                        <path d="M90 125 Q100 135 110 125" stroke="#333" stroke-width="3" fill="none" />
+                        <!-- Cheeks -->
+                        <circle cx="70" cy="120" r="8" fill="#ffb7c5" opacity="0.6" />
+                        <circle cx="130" cy="120" r="8" fill="#ffb7c5" opacity="0.6" />
+                        <!-- Heart -->
+                        <text x="100" y="170" font-size="30" text-anchor="middle" fill="#ff4d6d">❤️</text>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="main-title" data-typing data-typing-speed="100">Hey Beautiful ❤️</h1>
+
+            <!-- Dynamic Text Container -->
+            <div class="dynamic-text-container">
+                <p id="dynamic-text" class="sub-message">Counting every second until Valentine's... ⏳</p>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div id="countdown-timer" class="countdown-row">
+                <div class="t-unit"><span id="days">00</span><label>Days</label></div>
+                <div class="t-unit"><span id="hours">00</span><label>Hours</label></div>
+                <div class="t-unit"><span id="minutes">00</span><label>Mins</label></div>
+                <div class="t-unit"><span id="seconds">00</span><label>Secs</label></div>
+            </div>
+
+            <p id="start-question" class="question hidden" data-typing data-typing-delay="500">Ready for a little
+                journey through our memories?</p>
+            <button id="start-btn" class="pill-btn primary hidden" data-typing data-typing-delay="1500">Start the
+                Journey &rarr;</button>
+        </section>
+
+        <!-- Screen 1.5: Password Protection -->
+        <section id="password-screen" class="screen hidden">
+            <div class="sticker-wrapper">
+                <div class="sticker-circle">
+                    <!-- SVG: Thinking Panda -->
+                    <svg id="password-panda" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="90" fill="#fff5f7" />
+                        <!-- Ears -->
+                        <circle cx="60" cy="60" r="25" fill="#333" />
+                        <circle cx="140" cy="60" r="25" fill="#333" />
+                        <!-- Face -->
+                        <circle cx="100" cy="110" r="70" fill="#fff" />
+                        <!-- Eyes (Looking up) -->
+                        <ellipse cx="80" cy="100" rx="15" ry="20" fill="#333" />
+                        <ellipse cx="120" cy="100" rx="15" ry="20" fill="#333" />
+                        <circle cx="85" cy="95" r="5" fill="#fff" />
+                        <circle cx="125" cy="95" r="5" fill="#fff" />
+                        <!-- Nose & Mouth -->
+                        <circle cx="100" cy="115" r="5" fill="#333" />
+                        <path d="M95 125 Q100 120 105 125" stroke="#333" stroke-width="3" fill="none" />
+                        <!-- Question Mark -->
+                        <text x="150" y="80" font-size="50" fill="#ff4d6d" font-family="Quicksand"
+                            font-weight="bold">?</text>
+                    </svg>
+                </div>
+            </div>
+            <h2 class="step-title" data-typing>Wait a second... 🛑</h2>
+            <p class="question" data-typing data-typing-delay="1000">Enter the most precious date of our life along with
+                the month:</p>
+            <div class="input-group">
+                <input type="text" id="password-input" placeholder="e.g. 1 January" autocomplete="off">
+                <p id="password-error" class="error-msg hidden" data-typing>Incorrect date, try again! 🥺</p>
+            </div>
+            <button id="unlock-btn" class="pill-btn primary" data-typing>Unlock &rarr;</button>
+        </section>
+
+        <!-- Screen 2: The Quiz -->
+        <section id="quiz-screen" class="screen hidden">
+            <!-- SVG Definitions for Script Usage -->
+            <div id="svg-assets" style="display: none;">
+                <!-- Happy/Excited Panda -->
+                <svg id="happy-panda-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="90" fill="#fff5f7" />
+                    <circle cx="60" cy="60" r="25" fill="#333" />
+                    <circle cx="140" cy="60" r="25" fill="#333" />
+                    <circle cx="100" cy="110" r="70" fill="#fff" />
+                    <!-- Happy Eyes -->
+                    <path d="M70 100 Q80 90 90 100" stroke="#333" stroke-width="4" fill="none" />
+                    <path d="M110 100 Q120 90 130 100" stroke="#333" stroke-width="4" fill="none" />
+                    <!-- Cheeks -->
+                    <circle cx="70" cy="115" r="10" fill="#ffb7c5" opacity="0.6" />
+                    <circle cx="130" cy="115" r="10" fill="#ffb7c5" opacity="0.6" />
+                    <!-- Smile -->
+                    <path d="M90 120 Q100 135 110 120" stroke="#333" stroke-width="3" fill="none" />
+                    <!-- Sparkles -->
+                    <text x="50" y="80" font-size="20">✨</text>
+                    <text x="150" y="80" font-size="20">✨</text>
+                </svg>
+
+                <!-- Sad/Pouty Panda -->
+                <svg id="sad-panda-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="90" fill="#fff5f7" />
+                    <circle cx="60" cy="70" r="25" fill="#333" />
+                    <circle cx="140" cy="70" r="25" fill="#333" />
+                    <circle cx="100" cy="110" r="70" fill="#fff" />
+                    <!-- Sad Eyes -->
+                    <ellipse cx="80" cy="105" rx="12" ry="8" fill="#333" />
+                    <ellipse cx="120" cy="105" rx="12" ry="8" fill="#333" />
+                    <!-- Tear -->
+                    <path d="M125 115 Q125 125 120 125 Q115 125 125 115" fill="#a2dbf5" />
+                    <!-- Pout -->
+                    <path d="M92 130 Q100 120 108 130" stroke="#333" stroke-width="3" fill="none" />
+                </svg>
+            </div>
+
+            <div class="sticker-wrapper">
+                <div class="sticker-circle" id="quiz-panda-container">
+                    <!-- Default to Happy/Waving initially, script will update -->
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <use href="#welcome-panda" />
+                    </svg>
+                </div>
+            </div>
+            <h2 class="step-title" data-typing>Step 1: The Love Quiz 📝</h2>
+            <h3 id="question-text" class="question" data-typing data-typing-speed="30">1. Who is the lucky one in this
+                relationship?</h3>
+            <div id="answer-buttons" class="btn-group-vertical">
+                <!-- Buttons injected by JS -->
+            </div>
+        </section>
+
+        <!-- Screen 2.2: Find the Rings Game -->
+        <section id="rings-screen" class="screen hidden">
+            <div class="sticker-wrapper">
+                <div class="sticker-circle">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <use href="#welcome-panda" />
+                    </svg>
+                </div>
+            </div>
+            <h2 class="step-title" data-typing>Find the rings 💍</h2>
+            <p class="sub-message" data-typing data-typing-delay="1000">Hide and seek! Find all 3 rings to proceed.</p>
+            <div id="rings-grid" class="rings-grid">
+                <!-- 9 boxes injected by JS -->
+            </div>
+            <div class="rings-counter">Found: <span id="rings-found">0</span>/3</div>
+        </section> <!-- Screen 2.5: Catch My Love Game -->
+        <section id="game-screen" class="screen hidden">
+            <div class="sticker-wrapper">
+                <div class="sticker-circle">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <use href="#happy-panda-svg" />
+                    </svg>
+                </div>
+            </div>
+            <h2 class="step-title" data-typing>Catch My Love! ❤️</h2>
+            <p class="sub-message" data-typing data-typing-delay="1000">Catch 10 hearts to win her heart!</p>
+            <div id="game-area">
+                <!-- Hearts will spawn here -->
+            </div>
+            <div class="progress-bar-container">
+                <div id="game-progress" class="progress-bar"></div>
+            </div>
+        </section>
+
+
+
+        <!-- Screen 3: Final Proposal -->
+        <section id="proposal-screen" class="screen hidden">
+            <div class="sticker-wrapper">
+                <div class="sticker-circle">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <use href="#happy-panda-svg" />
+                    </svg>
+                </div>
+            </div>
+            <h1 class="script-title" data-typing>Sneha...</h1>
+            <h2 class="question" data-typing data-typing-delay="1000">Will you be my Valentine? ❤️</h2>
+            <div class="btn-group-horizontal">
+                <button id="yes-btn" class="pill-btn primary" data-typing data-typing-delay="2000">Yes! ❤️</button>
+                <button id="no-btn" class="pill-btn secondary" data-typing data-typing-delay="2500">No 💔</button>
+            </div>
+        </section>
+
+        <!-- Screen 4: Letter Reveal -->
+        <section id="letter-screen" class="screen hidden">
+            <div class="sticker-wrapper">
+                <div class="sticker-circle">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <use href="#happy-panda-svg" />
+                    </svg>
+                </div>
+            </div>
+            <h2 class="step-title" data-typing>A Letter For You...</h2>
+
+            <div class="envelope-wrapper" id="envelope">
+                <div class="envelope">
+                    <div class="flap"></div>
+                    <div class="letter">
+                        <div class="letter-content">
+                            <div class="letter-text">
+                                <p style="color: var(--primary); font-weight: bold; margin-bottom: 10px;" data-typing
+                                    data-typing-speed="50">Happy Valentine’s Day, Sneha.</p>
+                                <p style="margin-bottom: 10px;" data-typing data-typing-delay="1500"
+                                    data-typing-speed="30">Life feels softer, happier, and brighter with you.</p>
+                                <p data-typing data-typing-delay="3000" data-typing-speed="30">Thank you for being my
+                                    peace, my smile, and my favorite person always.</p>
+                            </div>
+                            <p class="letter-footer" data-typing data-typing-delay="4500">Forever yours.</p>
+                            <div class="ring-icon">💍</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <button id="to-yay-btn" class="pill-btn primary hidden" data-typing>Go ahead &rarr;</button>
+        </section>
+
+        <!-- Screen 5: Celebration -->
+        <section id="yay-screen" class="screen hidden">
+            <div class="sticker-wrapper">
+                <div class="sticker-circle">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <use href="#happy-panda-svg" />
+                    </svg>
+                </div>
+            </div>
+            <h1 class="script-title" data-typing>YAYYY!</h1>
+            <h2 class="celebration-subtitle" data-typing data-typing-delay="1000">I KNEW IT! ❤️</h2>
+            <div class="love-letter card">
+                <p data-typing data-typing-delay="2000" data-typing-speed="30">You've made me the happiest person. I
+                    can't wait to celebrate with you!</p>
+            </div>
+            <button id="scroll-hint-btn" class="scroll-btn">
+                <span data-typing data-typing-delay="4000">Scroll for our memories</span>
+                <div class="arrow">&darr;</div>
+            </button>
+        </section>
+
+        <!-- Screen 5: Memories -->
+        <section id="memories-screen" class="screen hidden">
+            <h2 class="script-title" data-typing>Our Journey ✨</h2>
+            <div class="memory-grid">
+                <div class="polaroid">
+                    <img src="photo1.jpeg" alt="Memory 1">
+                    <p data-typing data-typing-speed="50">Where it started...</p>
+                </div>
+                <div class="polaroid">
+                    <img src="photo2.jpeg" alt="Memory 2">
+                    <p data-typing data-typing-speed="50">Always laughing!</p>
+                </div>
+                <div class="polaroid">
+                    <img src="photo3.jpeg" alt="Memory 3">
+                    <p data-typing data-typing-speed="50">Those quiet nights...</p>
+                </div>
+                <div class="polaroid">
+                    <img src="photo4.jpeg" alt="Memory 4">
+                    <p data-typing data-typing-speed="50">Every moment matters.</p>
+                </div>
+                <div class="polaroid">
+                    <img src="photo5.jpeg" alt="Memory 5">
+                    <p data-typing data-typing-speed="50">My favorite person.</p>
+                </div>
+                <div class="polaroid">
+                    <img src="photo6.jpeg" alt="Memory 6">
+                    <p data-typing data-typing-speed="50">Pure happiness! ❤️</p>
+                </div>
+                <div class="polaroid">
+                    <img src="photo7.jpeg" alt="Memory 7">
+                    <p data-typing data-typing-speed="50">Our special bond.</p>
+                </div>
+                <div class="polaroid">
+                    <img src="photo8.jpeg" alt="Memory 8">
+                    <p data-typing data-typing-speed="50">Forever yours. 💍</p>
+                </div>
+            </div>
+            <div class="final-note card">
+                <p data-typing data-typing-delay="2000">Every second with you is a gift. Happy Valentine's Day, Sneha!
+                    💖</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
