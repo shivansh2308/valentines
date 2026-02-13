@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dynamicText = document.getElementById('dynamic-text');
 
     // Target Date: Feb 14, 2026
-    const targetDate = new Date("February 14, 2026 00:00:00").getTime();
+    const targetDate = new Date("February 13, 2026 17:50:00").getTime();
 
     // Trigger Shockwave Animation
     // Trigger Shockwave Animation
@@ -533,5 +533,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialTyping = welcomeScreen.querySelectorAll('[data-typing]');
     initialTyping.forEach(el => typeElement(el));
 });
+
 
 
